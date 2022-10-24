@@ -1,0 +1,9 @@
+<p>contact-page works!</p>
+<!-- <p>{{contacts | json}}</p> -->
+
+<section class="contact-page">
+  <h1 class="title">Contacts</h1>
+  <div class="contact-list">
+    <contact-preview *ngFor="let contact of contacts" [contact]="contact"></contact-preview>
+  </div>
+</section>

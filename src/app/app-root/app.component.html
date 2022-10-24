@@ -1,0 +1,14 @@
+<app-header (changePage)="onChangePage($event)"></app-header>
+<home-page *ngIf="currPage === 'home'"></home-page>
+<contact-page *ngIf="currPage === 'contact'"></contact-page>
+<stats-page *ngIf="currPage === 'stats'"></stats-page>
+<app-footer></app-footer>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>

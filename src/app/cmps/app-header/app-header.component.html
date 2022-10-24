@@ -1,0 +1,10 @@
+<header class="app-header">
+  <div class="app-logo">
+    <h1 class="title">Mr<span>.</span> Bitcoin</h1>
+  </div>
+  <nav>
+    <mat-icon (click)="changePage.emit('home')" fontIcon="home"></mat-icon>
+    <mat-icon (click)="changePage.emit('contact')" fontIcon="contacts"></mat-icon>
+    <mat-icon (click)="changePage.emit('stats')" fontIcon="insights"></mat-icon>
+  </nav>
+</header>

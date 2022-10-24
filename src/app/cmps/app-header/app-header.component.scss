@@ -1,0 +1,27 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--bg-clr2);
+  margin-bottom: 40px;
+
+  .app-logo {
+    span {
+      color: var(--highlight-clr1);
+    }
+
+    .title {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular';
+      font-weight: 700;
+      font-size: 30px;
+      margin: 0;
+    }
+  }
+
+  nav {
+    >*:not(:last-child) {
+      margin-inline-end: 20px;
+    }
+  }
+}
