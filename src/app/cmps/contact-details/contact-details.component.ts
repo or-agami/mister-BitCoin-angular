@@ -24,7 +24,6 @@ export class ContactDetailsComponent implements OnChanges {
   async loadContact() {
     const contact = await lastValueFrom(this.ContactService.getContactById(this.contactId));
     if (contact) this.contact = contact
-    console.log('contact:', contact)
   }
 
 }

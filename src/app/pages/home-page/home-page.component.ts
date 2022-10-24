@@ -21,6 +21,5 @@ export class HomePageComponent implements OnInit {
     // this.coinRate = await this.BitcoinService.getCoinRate()
     const coinRate = await lastValueFrom(this.BitcoinService.getCoinRate());
     if (coinRate) this.coinRate = coinRate
-    console.log('this.coinRate:', this.coinRate)
   }
 }

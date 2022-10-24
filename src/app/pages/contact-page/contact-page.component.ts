@@ -27,7 +27,6 @@ export class ContactPageComponent implements OnInit {
   }
 
   onSelectContact(contactId: string) {
-    console.log('contactId:', contactId)
     this.selectedContactId = contactId
   }
 
