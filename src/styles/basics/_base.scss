@@ -7,9 +7,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--main-bg-clr);
-
+  
   * {
     color: var(--txt-clr1);
+    box-sizing: border-box;
   }
 }
 
@@ -21,4 +22,12 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }

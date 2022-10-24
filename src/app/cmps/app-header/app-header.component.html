@@ -3,8 +3,14 @@
     <h1 class="title">Mr<span>.</span> Bitcoin</h1>
   </div>
   <nav>
-    <mat-icon (click)="changePage.emit('home')" fontIcon="home"></mat-icon>
-    <mat-icon (click)="changePage.emit('contact')" fontIcon="contacts"></mat-icon>
-    <mat-icon (click)="changePage.emit('stats')" fontIcon="insights"></mat-icon>
+    <button [class.selected]="currPage === 'home'" (click)="changePage.emit('home')">
+      <mat-icon fontIcon="home"></mat-icon>
+    </button>
+    <button [class.selected]="currPage === 'contact'" (click)="changePage.emit('contact')">
+      <mat-icon fontIcon="contacts"></mat-icon>
+    </button>
+    <button [class.selected]="currPage === 'stats'" (click)="changePage.emit('stats')">
+      <mat-icon fontIcon="insights"></mat-icon>
+    </button>
   </nav>
 </header>

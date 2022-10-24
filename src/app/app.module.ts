@@ -11,6 +11,8 @@ import { AppFooterComponent } from './cmps/app-footer/app-footer.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.component';
+import { ContactDetailsComponent } from './cmps/contact-details/contact-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.
     AppFooterComponent,
     ContactPageComponent,
     StatsPageComponent,
-    ContactPreviewComponent
+    ContactPreviewComponent,
+    ContactDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatIconModule,
   ],
   providers: [],

@@ -1,0 +1,61 @@
+.contact-page {
+  height: 100%;
+  padding-top: 40px;
+  padding-bottom: 50px;
+
+  .contact-layout {
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(220px, 350px) 2fr;
+
+    .contact-list {
+      overflow-y: auto;
+      border-right: 1px solid var(--border-clr2);
+        scrollbar-width: thin;
+        scrollbar-color: #878787 #D9D9D9;
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          cursor: pointer;
+        }
+      
+        &::-webkit-scrollbar-track {
+          background: #D9D9D9;
+        }
+      
+        &::-webkit-scrollbar-thumb {
+          border-radius: 25px;
+          background-color: #A6A5A5;
+          cursor: pointer;
+        }
+      
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+        border: none;
+        font-size: 18px;
+        color: var(--clr1);
+
+        &::placeholder {
+          color: var(--txt-clr2);
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+contact-preview {
+  display: block;
+  height: fit-content;
+  background-color: var(--bg-clr2);
+
+  &.selected {
+    background-color: var(--bg-clr1);
+  }
+}

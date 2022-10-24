@@ -1,0 +1,16 @@
+<section *ngIf="contact" class="contact-details">
+  <header class="header">
+    <img [src]="'https://robohash.org/' + contact._id" alt="User profile">
+    <h1>{{contact.name}}</h1>
+  </header>
+  <div class="details">
+    <div class="field number">
+      <span>Mobile</span>
+      <a [href]="'tel://' + contact.phone" target="_blank">{{contact.phone}}</a>
+    </div>
+    <div class="field email">
+      <span>Email</span>
+      <a [href]="'mailto:' + contact.email" target="_blank">{{contact.email}}</a>
+    </div>
+  </div>
+</section>

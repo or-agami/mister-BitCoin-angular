@@ -1,0 +1,12 @@
+.contact-preview {
+  padding-inline-start: 20px;
+  padding-block: 10px;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.contact-preview:first-child {
+  border-bottom: 1px solid var(--border-clr1);
+}

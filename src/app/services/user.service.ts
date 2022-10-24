@@ -26,7 +26,6 @@ export class UserService {
   }
 
   getUser() {
-    // this._user$.next(this._userDB)
     return this._userDB
   } 
 }

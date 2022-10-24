@@ -14,7 +14,7 @@ export class ContactPageComponent implements OnInit {
 
   contacts!: Contact[]
   subscription!: Subscription
-  selectedContactId = ''
+  selectedContactId: string = ''
 
   prm = Promise.resolve(14)
 
@@ -23,9 +23,11 @@ export class ContactPageComponent implements OnInit {
     this.subscription = this.ContactService.contacts$.subscribe(contacts => {
       this.contacts = contacts
     })
+    if (this.contacts[0]._id) this.selectedContactId = this.contacts[0]._id
   }
 
   onSelectContact(contactId: string) {
+    console.log('contactId:', contactId)
     this.selectedContactId = contactId
   }
 
