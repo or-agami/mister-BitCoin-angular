@@ -148,10 +148,11 @@ export class ContactService {
 
   public getContactById(id: string): Observable<Contact> {
     //mock the server work
-    const contact = this._contactsDb.find(contact => contact._id === id)
+    const contact = (id === 'edit') ? this.getEmptyContact() :
+      this._contactsDb.find(contact => contact._id === id)
 
     //return an observable
-    return contact ? of(contact) : throwError(() => `Contact id ${id} not found!`)
+    return contact ? of(contact) : throwError(() => `Contact id ${id} is not found!`)
   }
 
   public deleteContact(id: string) {
@@ -166,11 +167,20 @@ export class ContactService {
     return contact._id ? this._updateContact(contact) : this._addContact(contact)
   }
 
+  public getEmptyContact() {
+    return {
+      name: '',
+      phone: '',
+      email: '',
+    }
+  }
+
   private _updateContact(contact: Contact) {
     //mock the server work
     this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
     // change the observable data in the service - let all the subscribers know
     this._contacts$.next(this._sort(this._contactsDb))
+    return contact
   }
 
   private _addContact(contact: Contact) {
@@ -179,6 +189,7 @@ export class ContactService {
     if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
     this._contactsDb.push(newContact)
     this._contacts$.next(this._sort(this._contactsDb))
+    return newContact
   }
 
   private _sort(contacts: Contact[]): Contact[] {

@@ -13,6 +13,8 @@ import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.component';
 import { ContactDetailsComponent } from './cmps/contact-details/contact-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactPageComponent,
     StatsPageComponent,
     ContactPreviewComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    ContactEditComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

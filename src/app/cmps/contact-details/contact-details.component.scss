@@ -18,18 +18,33 @@
       width: 100px;
     }
 
-    h1 {
+    h1,
+    input {
       margin: 0;
+      margin-inline-end: 20px;
       font-size: 40px;
-      width: fit-content;
+      width: 300px;
     }
   }
 
-  .details {
+  input {
+    background-color: var(--bg-clr2);
+    padding: 5px 10px;
+    border: none;
+    outline: 1px solid var(--txt-clr2);
+    border-radius: 8px;
+    &:focus {
+      outline: 1px solid var(--highlight-clr1);
+    }
+  }
+
+  .details,
+  .details-edit {
     >.field {
       display: grid;
       grid-template-columns: 80px 3fr;
       column-gap: 25px;
+      align-items: center;
       width: 100%;
       max-width: 300px;
       margin: 30px 20px;
@@ -40,11 +55,13 @@
         color: var(--txt-clr2);
       }
 
-      a {
+      a,
+      input {
         justify-self: flex-start;
         text-decoration: none;
         font-size: 18px;
         font-weight: 300;
+        width: 240px;
       }
     }
   }

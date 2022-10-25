@@ -16,28 +16,32 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router
   ) { }
-  @Input() contactId!: string
+  
   contact!: Contact
   paramsSubscription!: Subscription
+  isInEditMode: boolean = false
 
   async ngOnInit() {
     this.paramsSubscription = this.route.params.subscribe(async params => {
-      console.log('params[id]:', params['id'])
-      const contact = await lastValueFrom(this.ContactService.getContactById(params['id']))
-      if (contact) this.contact = contact
+      this.isInEditMode = false
+      this.loadContact(params['id'])
+      if (params['edit'] || (params['id'] === 'edit')) this.isInEditMode = true
     })
   }
-  //   ngOnChanges(changes: SimpleChanges): void {
-  //     const { previousValue: prevId, currentValue: currId } = changes['contactId']
-  //   if(currId && (prevId !== currId)) this.loadContact()
-  // }
+
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe()
   }
 
-  async loadContact() {
-    const contact = await lastValueFrom(this.ContactService.getContactById(this.contactId));
-    if (contact) this.contact = contact
+  async onSaveContact() {
+    const contact = await this.ContactService.saveContact(this.contact)
+    this.isInEditMode = false
+    this.router.navigate(['/contact', contact._id])
+  }
+
+  async loadContact(contactId: string) {
+    const contact = await lastValueFrom(this.ContactService.getContactById(contactId));
+    if (contact) this.contact = { ...contact }
   }
 
 }

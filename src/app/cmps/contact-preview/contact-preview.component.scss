@@ -1,9 +1,13 @@
 .contact-preview {
   padding-inline-start: 20px;
   padding-block: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &.active {
     background-color: var(--bg-clr1);
+
     h3 {
       color: var(--highlight-clr1);
     }
@@ -11,6 +15,10 @@
 
   h3 {
     margin: 0;
+  }
+
+  .btns>* {
+    cursor: pointer;
   }
 }
 

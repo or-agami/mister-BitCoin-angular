@@ -1,4 +1,12 @@
 <!-- <div (click)="selectedContactId.emit(contact._id)" class="contact-preview"> -->
 <div [routerLink]="['/contact', contact._id]" routerLinkActive="active" class="contact-preview">
   <h3 class="contact-name">{{contact.name}}</h3>
+  <div class="btns">
+    <a [routerLink]="['/contact', contact._id, '/edit']" (click)="onEditContact($event)" routerLinkActive="active" class="edit">
+      <mat-icon fontIcon="create"></mat-icon>
+    </a>
+    <button *ngIf="contact._id" (click)="onRemoveContact(contact._id)">
+      <mat-icon fontIcon="clear"></mat-icon>
+    </button>
+  </div>
 </div>

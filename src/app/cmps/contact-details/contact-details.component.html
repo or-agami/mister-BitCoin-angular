@@ -1,16 +1,30 @@
 <section *ngIf="contact" class="contact-details">
-  <header class="header">
-    <img [src]="'https://robohash.org/' + contact._id" alt="User profile">
-    <h1>{{contact.name}}</h1>
-  </header>
-  <div class="details">
-    <div class="field number">
-      <span>Mobile</span>
-      <a [href]="'tel://' + contact.phone" target="_blank">{{contact.phone}}</a>
+  <form (ngSubmit)="onSaveContact()">
+    <header class="header">
+      <img [src]="'https://robohash.org/' + contact._id" alt="User profile">
+      <input *ngIf="isInEditMode" [(ngModel)]="contact.name" type="text" name="name" placeholder="Name">
+      <h1 *ngIf="!isInEditMode"> {{contact.name}}</h1>
+    </header>
+    <div *ngIf="isInEditMode" class="details-edit">
+      <div class="field number">
+        <span>Mobile</span>
+        <input [(ngModel)]="contact.phone" type="text" name="phone" placeholder="Phone">
+      </div>
+      <div class="field email">
+        <span>Email</span>
+        <input [(ngModel)]="contact.email" type="text" name="email" placeholder="Email">
+      </div>
+      <button >Save</button>
     </div>
-    <div class="field email">
-      <span>Email</span>
-      <a [href]="'mailto:' + contact.email" target="_blank">{{contact.email}}</a>
+    <div *ngIf="!isInEditMode" class="details">
+      <div class="field number">
+        <span>Mobile</span>
+        <a [href]="'tel://' + contact.phone" target="_blank">{{contact.phone}}</a>
+      </div>
+      <div class="field email">
+        <span>Email</span>
+        <a [href]="'mailto:' + contact.email" target="_blank">{{contact.email}}</a>
+      </div>
     </div>
-  </div>
+  </form>
 </section>
