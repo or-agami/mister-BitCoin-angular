@@ -1,36 +1,39 @@
 .contact-page {
   height: 100%;
-  padding-top: 40px;
-  padding-bottom: 50px;
+  // padding-top: 40px;
+  // padding-bottom: 50px;
 
   .contact-layout {
     height: 100%;
     display: grid;
-    grid-template-columns: minmax(220px, 350px) 2fr;
+    grid-template-columns: minmax(220px, 2fr) 3fr;
 
     .contact-list {
+      position: relative;
       overflow-y: auto;
       border-right: 1px solid var(--border-clr2);
-        scrollbar-width: thin;
-        scrollbar-color: #878787 #D9D9D9;
+      scrollbar-width: thin;
+      scrollbar-color: #878787 #D9D9D9;
 
-        &::-webkit-scrollbar {
-          width: 4px;
-          cursor: pointer;
-        }
-      
-        &::-webkit-scrollbar-track {
-          background: #D9D9D9;
-        }
-      
-        &::-webkit-scrollbar-thumb {
-          border-radius: 25px;
-          background-color: #A6A5A5;
-          cursor: pointer;
-        }
-      
+      &::-webkit-scrollbar {
+        width: 4px;
+        cursor: pointer;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #D9D9D9;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 25px;
+        background-color: #A6A5A5;
+        cursor: pointer;
+      }
+
 
       input {
+        position: sticky;
+        top: 0;
         width: 100%;
         padding: 10px;
         margin: 0;
@@ -46,6 +49,12 @@
           outline: none;
         }
       }
+      .contact-count {
+        position: sticky;
+        bottom: 0;
+        text-align: center;
+        background-color: var(--bg-clr3);
+      }
     }
   }
 }
@@ -54,8 +63,4 @@ contact-preview {
   display: block;
   height: fit-content;
   background-color: var(--bg-clr2);
-
-  &.selected {
-    background-color: var(--bg-clr1);
-  }
 }

@@ -1,12 +1,13 @@
 <section class="contact-page">
-  <h1 class="title">Contacts</h1>
+  <!-- <h1 class="title">Contacts</h1> -->
   <main class="contact-layout">
     <div class="contact-list">
       <input type="text" placeholder="Search All Contacts">
       <contact-preview [class.selected]="selectedContactId === contact._id" (selectedContactId)="onSelectContact($event)" [contact]="contact"
         *ngFor="let contact of contacts"></contact-preview>
-      <span class="contact-count">{{contacts.length}} Contacts</span>
+      <div class="contact-count">{{contacts.length}} Contacts</div>
     </div>
-    <contact-details *ngIf="selectedContactId" [contactId]="selectedContactId"></contact-details>
+    <!-- <contact-details *ngIf="selectedContactId" [contactId]="selectedContactId"></contact-details> -->
+    <router-outlet></router-outlet>
   </main>
 </section>

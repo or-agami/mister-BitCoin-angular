@@ -24,14 +24,14 @@
       margin-inline-end: 20px;
     }
 
-    button {
+    a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 6px 10px;
       border-radius: 16px;
 
-      &.selected {
+      &.active {
         background-color: var(--highlight-clr1);
       }
     }

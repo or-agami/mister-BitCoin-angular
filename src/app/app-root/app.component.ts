@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mister-BitCoin-angular';
-
-  // currPage: string = 'home'
-  currPage: string = 'contact'
-
-  onChangePage(to: string): void {
-    this.currPage = to
-  }
 }

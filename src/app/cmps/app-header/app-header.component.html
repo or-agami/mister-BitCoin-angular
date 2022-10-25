@@ -3,14 +3,20 @@
     <h1 class="title">Mr<span>.</span> Bitcoin</h1>
   </div>
   <nav>
-    <button [class.selected]="currPage === 'home'" (click)="changePage.emit('home')">
+    <!-- <button [class.selected]="currPage === 'home'" (click)="changePage.emit('home')"> -->
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
       <mat-icon fontIcon="home"></mat-icon>
-    </button>
-    <button [class.selected]="currPage === 'contact'" (click)="changePage.emit('contact')">
+    </a>
+    <!-- </button> -->
+    <!-- <button [class.selected]="currPage === 'contact'" (click)="changePage.emit('contact')"> -->
+    <a routerLink="/contact" routerLinkActive="active">
       <mat-icon fontIcon="contacts"></mat-icon>
-    </button>
-    <button [class.selected]="currPage === 'stats'" (click)="changePage.emit('stats')">
+    </a>
+    <!-- </button> -->
+    <!-- <button [class.selected]="currPage === 'stats'" (click)="changePage.emit('stats')"> -->
+    <a routerLink="/stats" routerLinkActive="active">
       <mat-icon fontIcon="insights"></mat-icon>
-    </button>
+    </a>
+    <!-- </button> -->
   </nav>
 </header>

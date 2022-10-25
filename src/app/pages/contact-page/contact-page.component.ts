@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
@@ -10,8 +11,11 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactPageComponent implements OnInit {
 
-  constructor(private ContactService: ContactService) { }
-
+  constructor(
+    private ContactService: ContactService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
   contacts!: Contact[]
   subscription!: Subscription
   selectedContactId: string = ''
@@ -23,7 +27,7 @@ export class ContactPageComponent implements OnInit {
     this.subscription = this.ContactService.contacts$.subscribe(contacts => {
       this.contacts = contacts
     })
-    if (this.contacts[0]._id) this.selectedContactId = this.contacts[0]._id
+    if (this.contacts[0]._id && this.route.children.length === 0) this.router.navigate(['contact', this.contacts[0]._id])
   }
 
   onSelectContact(contactId: string) {

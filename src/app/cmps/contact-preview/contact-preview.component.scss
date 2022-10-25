@@ -2,6 +2,13 @@
   padding-inline-start: 20px;
   padding-block: 10px;
 
+  &.active {
+    background-color: var(--bg-clr1);
+    h3 {
+      color: var(--highlight-clr1);
+    }
+  }
+
   h3 {
     margin: 0;
   }

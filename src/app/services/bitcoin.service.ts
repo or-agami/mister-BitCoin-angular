@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class BitcoinService {
 
 
   public getCoinRate() {
-    return this.http.get<{ USD: any }>('https://blockchain.info/ticker')
+    return this.http.get<{ USD: { last: number } }>('https://blockchain.info/ticker')
       .pipe(
         map(res => res['USD'].last)
       )
