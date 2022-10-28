@@ -27,4 +27,17 @@
       </div>
     </div>
   </form>
+  <form (ngSubmit)="onSubmitTransfer()">
+    <input [(ngModel)]="transferAmount" type="number" name="transferAmount">
+    <button>Transfer</button>
+  </form>
+  <div *ngIf="loggedinUser"  class="transactions">
+    <h1 class="title">Transactions</h1>
+    <div *ngFor="let move of loggedinUser.moves" class="transactions-list">
+      <div *ngIf="move.to === contact.name" class="transactions-preview">
+        <h1 class="date">{{move.at | date:'dd/MM/yyyy'}}</h1>
+        <h1 class="date">{{move.amount}}₿</h1>
+      </div>
+    </div>
+  </div>
 </section>

@@ -15,6 +15,9 @@ import { ContactDetailsComponent } from './cmps/contact-details/contact-details.
 import { HttpClientModule } from '@angular/common/http';
 import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component';
 import { FormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
+import { LineChartComponent } from './cmps/line-chart/line-chart.component';
+import { LoginComponent } from './cmps/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { FormsModule } from '@angular/forms';
     StatsPageComponent,
     ContactPreviewComponent,
     ContactDetailsComponent,
-    ContactEditComponent
+    ContactEditComponent,
+    LineChartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatIconModule,
     FormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

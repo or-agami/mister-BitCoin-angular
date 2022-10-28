@@ -1,4 +1,3 @@
-<!-- <div (click)="selectedContactId.emit(contact._id)" class="contact-preview"> -->
 <div [routerLink]="['/contact', contact._id]" routerLinkActive="active" class="contact-preview">
   <h3 class="contact-name">{{contact.name}}</h3>
   <div class="btns">

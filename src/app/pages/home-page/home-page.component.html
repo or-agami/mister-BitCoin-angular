@@ -1,7 +1,84 @@
 <main class="home-page">
-  <div *ngIf="user" class="user-info">
-    <h1>Hi, {{user.name}}, Nice to see you again.</h1>
-    <h3>Balance: {{user.coins}}₿</h3>
+  <div *ngIf="loggedinUser" class="user-info">
+    <h1>Hi, {{loggedinUser.name}}, Nice to see you again.</h1>
+    <h3>Balance: {{loggedinUser.coins}}₿</h3>
     <h3 *ngIf="coinRate">BTC: {{coinRate}}$</h3>
+  </div>
+  <div *ngIf="!loggedinUser" class="user-info login-suggest">
+    <h1>Welcome</h1>
+    <h3>Here you can find all information about bitcoin</h3>
+    <h3>Easily send and receive coins</h3>
+    <h3>Login now and try!</h3>
+  </div>
+  <div *ngIf="loggedinUser && loggedinUser.moves.length > 0"  class="transactions">
+    <h1 class="title">Your last moves:</h1>
+    <ul>
+      <li *ngFor="let move of loggedinUser.moves">
+        <h1 class="date">{{move.to}}</h1>
+        <h1 class="date">{{move.at | date:'dd/MM/yyyy'}}</h1>
+        <h1 class="date">{{move.amount}}₿</h1>
+      </li>
+    </ul>
+  </div>
+  <div class="info-container">
+    <div class="market-info">
+      <div class="info">
+        <div class="heading-wrapper">
+          <div class="info-wrapper">
+            <div class="info-inner">
+              <img class="img" alt=""
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZWxsaXBzZSBmaWxsPSIjRkY5MzMyIiBvcGFjaXR5PSIuMiIgY3g9IjIyIiBjeT0iMjIiIHJ4PSIxNy45NjUiIHJ5PSIxNy45NjQiLz48cGF0aCBkPSJNMTMuMjE1IDM3LjA0M0g5LjRhMi40ODEgMi40ODEgMCAwMS0yLjQ4LTIuNDh2LTcuODc3YTIuNDggMi40OCAwIDAxMi40OC0yLjQ4aDMuODE2YTIuNDggMi40OCAwIDAxMi40OCAyLjQ4djcuODc2YTIuNDggMi40OCAwIDAxLTIuNDggMi40OG0xMC45NDUuMDAxaC0zLjgxNWEyLjQ4MSAyLjQ4MSAwIDAxLTIuNDgtMi40OHYtMjEuODNhMi40OCAyLjQ4IDAgMDEyLjQ4LTIuNDhoMy44MTVhMi40OCAyLjQ4IDAgMDEyLjQ4MSAyLjQ4djIxLjgzYTIuNDggMi40OCAwIDAxLTIuNDggMi40OG0xMC45NDYgMGgtMy44MTRhMi40ODEgMi40ODEgMCAwMS0yLjQ4My0yLjQ4VjQuOThhMi40ODEgMi40ODEgMCAwMTIuNDgzLTIuNDhoMy44MTRhMi40OCAyLjQ4IDAgMDEyLjQ4IDIuNDh2MjkuNTgyYTIuNDggMi40OCAwIDAxLTIuNDggMi40OCIgZmlsbD0iI0ZGQjM0NyIvPjxwYXRoIGQ9Ik0zMi40NjMgOS41NjNhMy41NTUgMy41NTUgMCAwMTMuNTUgMy41NSAzLjU1NSAzLjU1NSAwIDAxLTQuMjcgMy40OGwtMi44NzcgNS40NDJhMy41NTMgMy41NTMgMCAwMTEuNTI1IDIuOTE1IDMuNTU0IDMuNTU0IDAgMDEtMy41NSAzLjU1IDMuNTU1IDMuNTU1IDAgMDEtMy41NTItMy41NWMwLS43MDcuMjA5LTEuMzY4LjU2Ny0xLjkyMWwtNC4yMjgtMy41MjVhMy41NDcgMy41NDcgMCAwMS0yLjUwMi4zMTVsLTIuNjcgNC4wMDZhMy41NCAzLjU0IDAgMDExLjE0IDIuNjA0IDMuNTU1IDMuNTU1IDAgMDEtMy41NTEgMy41NSAzLjU1NCAzLjU1NCAwIDAxLTMuNTUtMy41NSAzLjU1NSAzLjU1NSAwIDAxMy41NS0zLjU1Yy4yOSAwIC41Ny4wMzYuODQuMTAxbDIuNjctNC4wMDRhMy41NDMgMy41NDMgMCAwMS0xLjE0My0yLjYwNyAzLjU1NCAzLjU1NCAwIDAxMy41NS0zLjU1MiAzLjU1NCAzLjU1NCAwIDAxMy41NTEgMy41NTJjMCAuNzA3LS4yMDcgMS4zNjgtLjU2NyAxLjkyM2w0LjIyOCAzLjUyNGEzLjUzNiAzLjUzNiAwIDAxMi4wMTItLjRsMi45NjUtNS42MWEzLjU0IDMuNTQgMCAwMS0xLjIzOS0yLjY5MiAzLjU1NSAzLjU1NSAwIDAxMy41NS0zLjU1ek0xMi4wNDUgMjQuNjU1Yy0uOTc5IDAtMS43NzYuNzk1LTEuNzc2IDEuNzc0YTEuNzc4IDEuNzc4IDAgMDAzLjU1MyAwYzAtLjk3OS0uNzk3LTEuNzc0LTEuNzc3LTEuNzc0em0xNC43OTYtMS40OGExLjc3NiAxLjc3NiAwIDEwLjAwMSAzLjU1MSAxLjc3NiAxLjc3NiAwIDAwLS4wMDEtMy41NTJ6bS04Ljg3OC04LjU4Yy0uOTc5IDAtMS43NzYuNzk1LTEuNzc2IDEuNzczIDAgLjk4Ljc5NyAxLjc3NyAxLjc3NiAxLjc3N2ExLjc3NiAxLjc3NiAwIDAwMC0zLjU1em0xNC41LTMuMjU3Yy0uOTc5IDAtMS43NzYuNzk3LTEuNzc2IDEuNzc2IDAgLjk3OC43OTcgMS43NzUgMS43NzYgMS43NzUuOTc4IDAgMS43NzUtLjc5NyAxLjc3NS0xLjc3NSAwLS45NzktLjc5Ny0xLjc3Ni0xLjc3NS0xLjc3NnoiIGZpbGw9IiNFQTUyMzciLz48cGF0aCBkPSJNMjIuMjUzIDQwLjc3NGEuODYzLjg2MyAwIDExLjAwMiAxLjcyNS44NjMuODYzIDAgMDEtLjAwMi0xLjcyNXpNMS42NjcgMjUuNjE3YS44NjMuODYzIDAgMTEwIDEuNzI1Ljg2My44NjMgMCAwMTAtMS43MjV6bTQwLjY2My01LjIzNGEuODYzLjg2MyAwIDExLjAwMiAxLjcyNi44NjMuODYzIDAgMDEtLjAwMi0xLjcyNnpNMjQuNTAxIDYuODk1YS44NjMuODYzIDAgMTEuMDAyIDEuNzI2Ljg2My44NjMgMCAwMS0uMDAyLTEuNzI2ek03LjM3NCAxLjVhLjg2Mi44NjIgMCAxMTAgMS43MjQuODYyLjg2MiAwIDAxMC0xLjcyNHoiIGZpbGw9IiNGRjkzMzIiLz48L2c+PC9zdmc+">
+              <h4 class="title">One Dashboard for Everything</h4>
+            </div>
+            <div class="description">Track every asset you have from one dashboard, and stay on top of your
+              game.</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="heading-wrapper">
+          <div class="info-wrapper">
+            <div class="info-inner">
+              <img class="img" alt=""
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjgwNSAyLjUyNCkiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGVsbGlwc2UgZmlsbD0iI0ZGOTMzMiIgb3BhY2l0eT0iLjIiIGN4PSIyMS4xOTUiIGN5PSIxOS40NzYiIHJ4PSIxNy45NjUiIHJ5PSIxNy45NjQiLz48cGF0aCBkPSJNNDIuMzkgMzguMDhhLjg3My44NzMgMCAxMS0xLjc0NiAwIC44NzMuODczIDAgMDExLjc0NiAwTTEuNzQ3Ljg3NEEuODczLjg3MyAwIDExMCAuODc2Ljg3My44NzMgMCAwMTEuNzQ3Ljg3NCIgZmlsbD0iI0ZGOTMzMiIvPjxwYXRoIGQ9Ik0xNC41OCAxNi44ODZjLjQ5NSAwIC45MTQuMzYzLjk3NC44NDZsLjM2NCAyLjUzOGMuNS4yMjMuOTguNTAyIDEuNDM4LjgzM2wyLjM5My0uOTZhLjk4MS45ODEgMCAwMTEuMjIuNDM4bDIuMTEgMy42NWMuMjQuNDQxLjEzNy45Ny0uMjQgMS4yNjdsLTIuMDMgMS41ODhjLjAyNi4yNDMuMDQ4LjUzLjA0OC44MzIgMCAuMzAzLS4wMjIuNTg4LS4wNDkuODMzbDIuMDMgMS41ODdjLjM3OC4zLjQ4MS44MjguMjQ2IDEuMjZsLTIuMTE5IDMuNjdhLjk3Ljk3IDAgMDEtMS4yMTEuNDI4bC0yLjQtLjk2MmMtLjQ4LjM0LS45NTMuNjE1LTEuNDM0LjgzM2wtLjM2NiAyLjU0N2EuOTcyLjk3MiAwIDAxLS45NzMuODM4aC00LjIzYS45NzQuOTc0IDAgMDEtLjk3NC0uODQ3bC0uMzY0LTIuNTM4YTguMTY4IDguMTY4IDAgMDEtMS40MzYtLjgzM2wtMi4zOTUuOTZhLjk3Ny45NzcgMCAwMS0xLjIyLS40MzhsLTIuMTEtMy42NDlhLjk5Ni45OTYgMCAwMS4yNC0xLjI2OGwyLjAzLTEuNTg2YTguMjkyIDguMjkyIDAgMDEtLjA0OC0uODM0YzAtLjI1My4wMTctLjUyMi4wNDgtLjgzMmwtMi4wMjctMS41ODZhLjk5Ljk5IDAgMDEtLjI0LTEuMjc1bDIuMTEyLTMuNjUzYy4yMjQtLjQxLjc2MS0uNjA1IDEuMjEtLjQzbDIuNDAxLjk2MmMuNDc5LS4zNC45NTMtLjYxNSAxLjQzNS0uODM0bC4zNjQtMi41NDdhLjk3My45NzMgMCAwMS45NzMtLjgzOHptLTIuMTE1IDYuNTkyYTQuNDQ1IDQuNDQ1IDAgMDAtNC40NDEgNC40NDEgNC40NDYgNC40NDYgMCAwMDQuNDQxIDQuNDQyIDQuNDQ2IDQuNDQ2IDAgMDA0LjQ0Mi00LjQ0MiA0LjQ0NSA0LjQ0NSAwIDAwLTQuNDQyLTQuNDQxeiIgZmlsbD0iI0ZGQjM0NyIvPjxwYXRoIGQ9Ik0xNC45NzIgMTAuNTQ4YS44NzMuODczIDAgMTEtMS43NDcuMDAyLjg3My44NzMgMCAwMTEuNzQ3LS4wMDJNMzMuMzk1IDI3LjE0YS44NzQuODc0IDAgMTEtMS43NDggMCAuODc0Ljg3NCAwIDAxMS43NDggMG0tMjAuMDU4IDguNzU2YS44NzMuODczIDAgMTEtMS43NDYuMDAzLjg3My44NzMgMCAwMTEuNzQ2LS4wMDMiIGZpbGw9IiNGRjkzMzIiLz48cGF0aCBkPSJNMjkuOTI3IDE1LjQ3NmE0LjQ0NSA0LjQ0NSAwIDAxLTQuNDQxLTQuNDQgNC40NDUgNC40NDUgMCAwMTQuNDQxLTQuNDQyIDQuNDQ1IDQuNDQ1IDAgMDE0LjQ0MiA0LjQ0MiA0LjQ0NSA0LjQ0NSAwIDAxLTQuNDQyIDQuNDRNNDAuMyAxMy40NTRsLTIuMDMtMS41ODdjLjAyNy0uMjQ0LjA0OS0uNTMuMDQ5LS44MzMgMC0uMzAxLS4wMjItLjU4OC0uMDQ5LS44MzJsMi4wMzEtMS41ODhhLjk5Ni45OTYgMCAwMC4yNC0xLjI2OGwtMi4xMS0zLjY0OWEuOTc2Ljk3NiAwIDAwLTEuMjE5LS40MzhsLTIuMzk0Ljk2YTguMTI3IDguMTI3IDAgMDAtMS40MzYtLjgzM0wzMy4wMTcuODQ3YS45NzcuOTc3IDAgMDAtLjk3NC0uODQ2aC00LjIzMWEuOTcyLjk3MiAwIDAwLS45NzIuODM4bC0uMzY1IDIuNTQ5YTguNTU0IDguNTU0IDAgMDAtMS40MzUuODMzbC0yLjQtLjk2M2EuOTk3Ljk5NyAwIDAwLTEuMjExLjQzMWwtMi4xMTMgMy42NTRhLjk5Ljk5IDAgMDAuMjQgMS4yNzRsMi4wMjggMS41ODdjLS4wMzEuMzEtLjA0Ny41NzktLjA0Ny44MzIgMCAuMjUyLjAxNi41MjIuMDQ3LjgzMWwtMi4wMjkgMS41ODlhLjk5NC45OTQgMCAwMC0uMjQgMS4yNjhsMi4xMSAzLjY0OWEuOTguOTggMCAwMDEuMjIuNDM4bDIuMzk0LS45NmMuNDU4LjMyOS45MzguNjA4IDEuNDM2LjgzMmwuMzY0IDIuNTM4Yy4wNi40ODUuNDc3Ljg0OC45NzQuODQ4aDQuMjNhLjk3NS45NzUgMCAwMC45NzQtLjgzOGwuMzY1LTIuNTQ4YTguNTIgOC41MiAwIDAwMS40MzQtLjgzNGwyLjQwMS45NjNhLjk3Mi45NzIgMCAwMDEuMjEtLjQzbDIuMTE5LTMuNjY4YS45OTQuOTk0IDAgMDAtLjI0Ni0xLjI2IiBmaWxsPSIjRkZCMzQ3Ii8+PHBhdGggZD0iTTEuOTgxIDE2LjI0M2wyLjMzOS4zOTNDNS40OTcgOS41NTggMTEuMDM3IDMuOTU1IDE4LjA1MiAyLjY1MkwxNy42MjguMzNDOS42MjQgMS44MDYgMy4zMzEgOC4xOTIgMS45ODEgMTYuMjQzem0zNi4wODEgNi4wNzRjLTEuMTYxIDcuMDgtNi43MDEgMTIuNjgtMTMuNzMyIDEzLjk4M2wuNDI0IDIuMzIzQzMyLjc3MyAzNy4xNDggMzkuMDUgMzAuNzYgNDAuNCAyMi43MWwtMi4zMzktLjM5MnoiIGZpbGw9IiNFQTUyMzciLz48L2c+PC9zdmc+">
+              <h4 class="title">Seamless Portfolio Management</h4>
+            </div>
+            <div class="description">Take a look at your total crypto investing picture and start taking
+              steps to improve it.</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="heading-wrapper">
+          <div class="info-wrapper">
+            <div class="info-inner">
+              <img class="img"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZWxsaXBzZSBmaWxsPSIjRkY5MzMyIiBvcGFjaXR5PSIuMiIgY3g9IjIyIiBjeT0iMjIiIHJ4PSIxNy45NjUiIHJ5PSIxNy45NjQiLz48cGF0aCBkPSJNMjIgNC44MDVjLjI2NCAwIC41My4wNy43NjYuMjEyIDQuMTQxIDIuNDggOC45NDUgNC41NSAxMy41MyA1LjgyNGExLjUyNSAxLjUyNSAwIDAxMS4xMDcgMS40NzV2Ny40OGMwIDcuOTc3LTMuNjI5IDEzLjI2LTYuNjc0IDE2LjI4OS0zLjUwNSAzLjQ4Ni03LjI4IDUuMTEtOC43MyA1LjExLTEuNDQ5IDAtNS4yMjMtMS42MjQtOC43MzEtNS4xMS0zLjA0NC0zLjAyOS02LjY3MS04LjMxMi02LjY3MS0xNi4yODl2LTcuNDhjMC0uNjg5LjQ1My0xLjI5MyAxLjEwOC0xLjQ3NSA0Ljc4Mi0xLjMzIDkuMjA2LTMuMjM1IDEzLjUyOC01LjgyNC4yMzctLjE0MS41MDEtLjIxMi43NjYtLjIxMnptMCAyLjQxNmExLjI0IDEuMjQgMCAwMC0uNjU0LjE4NWMtMy42OTQgMi4yNTctNy40NzcgMy45Mi0xMS41NjEgNS4wNzctLjU2Ny4xNi0uOTY2LjY4NC0uOTY2IDEuMjl2Ni41MjZjMCA2Ljk2IDMuMTA0IDExLjU3MiA1LjcxIDE0LjIxMyAyLjMwNyAyLjM0IDUuNDg2IDMuODM0IDYuODMgNC4zOTguNDE1LjE3Ni44NjcuMTc2IDEuMjgyIDAgMS4zNDQtLjU2NCA0LjUyMy0yLjA1OSA2LjgzLTQuMzk4IDIuNjA2LTIuNjQxIDUuNzEtNy4yNTIgNS43MS0xNC4yMTN2LTYuNTI2YzAtLjYwNi0uMzktMS4xMjctLjk1Ny0xLjI4Ny0zLjkxOC0xLjExNC04LjAyOC0yLjkxNi0xMS41NjgtNS4wOEExLjI1IDEuMjUgMCAwMDIyIDcuMjJ6IiBmaWxsPSIjRUE1MjM3Ii8+PHBhdGggZD0iTTIyIDEwLjAwNGMtLjE4OCAwLS4zNzQuMDUtLjU0LjE1M2EzNy44NTggMzcuODU4IDAgMDEtOS41MzkgNC4xODkgMS4xMDEgMS4xMDEgMCAwMC0uNzk2IDEuMDY0djUuMzg1YzAgNS43NDMgMi41NiA5LjU0NyA0LjcxMSAxMS43MjYgMS45MDQgMS45MyA0LjUyNiAzLjE2MyA1LjYzNSAzLjYyOWExLjM0IDEuMzQgMCAwMDEuMDU4IDBjMS4xMS0uNDY2IDMuNzMxLTEuNjk5IDUuNjM2LTMuNjI5IDIuMTUtMi4xNzkgNC43MS01Ljk4MyA0LjcxLTExLjcyNlYxNS40MWMwLS41LS4zMjItLjkzLS43OS0xLjA2Mi0zLjIzMi0uOTE5LTYuNjIzLTIuNDA2LTkuNTQ0LTQuMTkxYTEuMDMyIDEuMDMyIDAgMDAtLjU0MS0uMTUzIiBmaWxsPSIjRkZCMzQ3Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTI5LjcwOCAxOS4xNzNsLTkuMzIgOS4zMDctNi4wOTYtNi4xMSAxLjM3OC0xLjM3OCA0LjcxNyA0LjczMiA3Ljk0My03Ljk0MnoiLz48cGF0aCBkPSJNMzQuNTU1IDQwLjgxOGEuODczLjg3MyAwIDExLjAwMSAxLjc0Ny44NzMuODczIDAgMDEtLjAwMS0xLjc0N3pNMS42NzkgMjUuOTI1YS44NzMuODczIDAgMTEwIDEuNzQ2Ljg3My44NzMgMCAwMTAtMS43NDZ6bTQwLjY0Mi00LjU1NmEuODczLjg3MyAwIDExLjAwMSAxLjc0Ny44NzMuODczIDAgMDEtLjAwMS0xLjc0N3pNOC40MDYgMy4yNjRhLjg3My44NzMgMCAxMTAgMS43NDUuODczLjg3MyAwIDAxMC0xLjc0NXptMTcuNDM5LTEuODI5YS44NzMuODczIDAgMTEuMDAyIDEuNzQ3Ljg3My44NzMgMCAwMS0uMDAyLTEuNzQ3eiIgZmlsbD0iI0ZGOTMzMiIvPjwvZz48L3N2Zz4="
+                alt="">
+              <h4 class="title">Quick &amp; Secure</h4>
+            </div>
+            <div class="description">Getting started with CoinStats only takes a few minutes, and it’s
+              completely free and secure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="users-info">
+      <div class="heading-wrapper">
+        <div class="heading-inner"><span class="title">500M</span>
+          <p class="description">Over 500 million transactions and trades tracked and managed.</p>
+        </div>
+      </div>
+      <div class="heading-wrapper">
+        <div class="heading-inner"><span class="title">$100B</span>
+          <p class="description">Managing more than $100 billion in portfolios.</p>
+        </div>
+      </div>
+      <div class="heading-wrapper">
+        <div class="heading-inner"><span class="title">1.2M+</span>
+          <p class="description">More than 1.2M users from all over the world.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </main>

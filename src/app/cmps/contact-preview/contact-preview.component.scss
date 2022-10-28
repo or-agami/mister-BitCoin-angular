@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: space-between;
 
+  .contact-name {
+    cursor: pointer;
+  }
+
   &.active {
     background-color: var(--bg-clr1);
 

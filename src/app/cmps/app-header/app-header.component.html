@@ -3,6 +3,7 @@
     <h1 class="title">Mr<span>.</span> Bitcoin</h1>
   </div>
   <nav>
+    <mat-icon (click)="toggleLogin()" [fontIcon]="loggedinUser ? 'logout' : 'login'"></mat-icon>
     <!-- <button [class.selected]="currPage === 'home'" (click)="changePage.emit('home')"> -->
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
       <mat-icon fontIcon="home"></mat-icon>
@@ -20,3 +21,5 @@
     <!-- </button> -->
   </nav>
 </header>
+
+<login *ngIf="isLoginModalOpen" (toggleLogin)="toggleLogin()"></login>
