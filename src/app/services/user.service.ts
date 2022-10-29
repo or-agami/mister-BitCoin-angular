@@ -24,9 +24,7 @@ export class UserService {
   }
 
   login(name: string) {
-    console.log('name:', name)
     const user = new User(name);
-    console.log('user:', user)
     this._saveToStorage(user)
     this._user$.next(user)
   }
@@ -40,7 +38,7 @@ export class UserService {
     const user = this._loadFromStorage()
     if (!user) return
     const move = new Move(amount, to)
-    console.log('move:', move)
+    user.coins -= amount
     user.moves.unshift(move)
     this._saveToStorage(user)
     this._user$.next(user)
