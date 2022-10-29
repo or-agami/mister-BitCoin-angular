@@ -1,0 +1,24 @@
+
+@mixin for-mobile-layout {
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin for-narrow-layout {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin for-normal-layout {
+  @media (min-width: 1360px) {
+    @content;
+  }
+}
+
+@mixin for-wide-layout {
+  @media (min-width: 1920px) {
+    @content;
+  }
+}
