@@ -2,7 +2,7 @@
   <div (click)="$event.stopPropagation()" class="login">
     <form>
       <h1>Login</h1>
-      <input [(ngModel)]="username" type="text" name="username">
+      <input [(ngModel)]="username" autofocus type="text" name="username">
       <button (click)="onLogin()">Submit</button>
     </form>
   </div>

@@ -15,7 +15,6 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   @Input() currPage!: string
-  @Output() changePage = new EventEmitter<string>()
 
   loggedinUser!: User | null
   subscription!: Subscription

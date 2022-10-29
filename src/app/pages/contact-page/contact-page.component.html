@@ -1,19 +1,22 @@
 <section class="contact-page">
-  <main class="contact-layout">
+  <main class="contact-layout" [class.list-open]="isContactListOpen">
     <div class="contact-list">
       <div class="search">
         <input type="text" placeholder="Search All Contacts">
-        <button>
+        <button (click)="onCloseContactList()">
           <a routerLink="/contact/edit" routerLinkActive="active">
             <mat-icon fontIcon="add_circle_outline"></mat-icon>
           </a>
         </button>
       </div>
-      <contact-preview [class.selected]="selectedContactId === contact._id"
-        (selectedContactId)="onSelectContact($event)" [contact]="contact" *ngFor="let contact of contacts">
+      <contact-preview (closeList)="onCloseContactList()" [contact]="contact"
+        *ngFor="let contact of contacts">
       </contact-preview>
       <div class="contact-count">{{contacts.length}} Contacts</div>
     </div>
+    <button (click)="onToggleContactList()" class="contact-list-toggle">
+      <mat-icon fontIcon="chevron_left"></mat-icon>Back
+    </button>
     <!-- <contact-details *ngIf="selectedContactId" [contactId]="selectedContactId"></contact-details> -->
     <router-outlet></router-outlet>
   </main>

@@ -10,15 +10,20 @@
     <h3>Easily send and receive coins</h3>
     <h3>Login now and try!</h3>
   </div>
-  <div *ngIf="loggedinUser && loggedinUser.moves.length > 0"  class="transactions">
-    <h1 class="title">Your last moves:</h1>
-    <ul>
-      <li *ngFor="let move of loggedinUser.moves">
-        <h1 class="date">{{move.to}}</h1>
-        <h1 class="date">{{move.at | date:'dd/MM/yyyy'}}</h1>
-        <h1 class="date">{{move.amount}}₿</h1>
-      </li>
-    </ul>
+  <div *ngIf="loggedinUser && loggedinUser.moves.length > 0" class="transactions">
+    <div class="transactions-wrapper">
+      <h1 class="title">Your last moves:</h1>
+      <ul>
+        <ng-template ngFor let-move [ngForOf]="loggedinUser.moves" let-idx="index">
+          <!-- <li *ngFor="let move of loggedinUser.moves; index as idx"> -->
+          <li *ngIf="idx < 5" class="transaction">
+            <h2 class="to">{{move.to}}</h2>
+            <h4 class="date">{{move.at | date:'dd/MM/yyyy'}}</h4>
+            <h3 class="amount">{{move.amount}} ₿</h3>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
   </div>
   <div class="info-container">
     <div class="market-info">

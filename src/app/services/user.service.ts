@@ -41,7 +41,7 @@ export class UserService {
     if (!user) return
     const move = new Move(amount, to)
     console.log('move:', move)
-    user.moves.push(move)
+    user.moves.unshift(move)
     this._saveToStorage(user)
     this._user$.next(user)
   }

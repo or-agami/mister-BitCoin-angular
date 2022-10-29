@@ -1,4 +1,4 @@
-<div [routerLink]="['/contact', contact._id]" routerLinkActive="active" class="contact-preview">
+<div [routerLink]="['/contact', contact._id]" (click)="closeList.emit()" routerLinkActive="active" class="contact-preview">
   <h3 class="contact-name">{{contact.name}}</h3>
   <div class="btns">
     <a [routerLink]="['/contact', contact._id, '/edit']" (click)="onEditContact($event)" routerLinkActive="active" class="edit">

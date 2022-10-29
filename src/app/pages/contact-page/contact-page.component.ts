@@ -19,6 +19,7 @@ export class ContactPageComponent implements OnInit {
   contacts!: Contact[]
   subscription!: Subscription
   selectedContactId: string = ''
+  isContactListOpen: boolean = false // for mobile only
 
   prm = Promise.resolve(14)
 
@@ -30,8 +31,12 @@ export class ContactPageComponent implements OnInit {
     if (this.contacts[0]._id && this.route.children.length === 0) this.router.navigate(['contact', this.contacts[0]._id])
   }
 
-  onSelectContact(contactId: string) {
-    this.selectedContactId = contactId
+  onCloseContactList() {
+    this.isContactListOpen = false
+  }
+
+  onToggleContactList() {
+    this.isContactListOpen = !this.isContactListOpen
   }
 
   ngOnDestroy(): void {

@@ -3,22 +3,18 @@
     <h1 class="title">Mr<span>.</span> Bitcoin</h1>
   </div>
   <nav>
-    <mat-icon (click)="toggleLogin()" [fontIcon]="loggedinUser ? 'logout' : 'login'"></mat-icon>
-    <!-- <button [class.selected]="currPage === 'home'" (click)="changePage.emit('home')"> -->
+    <a href="#">
+      <mat-icon (click)="toggleLogin()" [fontIcon]="loggedinUser ? 'logout' : 'login'"></mat-icon>
+    </a>
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
       <mat-icon fontIcon="home"></mat-icon>
     </a>
-    <!-- </button> -->
-    <!-- <button [class.selected]="currPage === 'contact'" (click)="changePage.emit('contact')"> -->
-    <a routerLink="/contact" routerLinkActive="active">
+    <a *ngIf="loggedinUser" routerLink="/contact" routerLinkActive="active">
       <mat-icon fontIcon="contacts"></mat-icon>
     </a>
-    <!-- </button> -->
-    <!-- <button [class.selected]="currPage === 'stats'" (click)="changePage.emit('stats')"> -->
-    <a routerLink="/stats" routerLinkActive="active">
+    <a class="stats" routerLink="/stats" routerLinkActive="active">
       <mat-icon fontIcon="insights"></mat-icon>
     </a>
-    <!-- </button> -->
   </nav>
 </header>
 

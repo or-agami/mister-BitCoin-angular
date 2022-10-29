@@ -1,12 +1,51 @@
+@import '../../../styles/main.scss';
+
 .contact-page {
   height: 100%;
-  // padding-top: 40px;
-  // padding-bottom: 50px;
+
+  @include for-mobile-layout {
+    overflow: hidden;
+  }
 
   .contact-layout {
     height: 100%;
     display: grid;
     grid-template-columns: minmax(220px, 2fr) 3fr;
+
+    .contact-list-toggle {
+      display: none;
+      position: absolute;
+    }
+
+    @include for-mobile-layout {
+
+      &:not(.list-open) {
+        grid-template-columns: 0 1fr;
+
+
+        .contact-list {
+          translate: -100%;
+        }
+
+        .contact-list-toggle {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 10px;
+          margin-left: 10px;
+
+          &:hover {
+            color: var(--highlight-clr1);
+            cursor: pointer;
+          }
+        }
+      }
+
+      &.list-open {
+        grid-template-columns: 1fr 0;
+
+      }
+    }
 
     .contact-list {
       position: relative;
@@ -17,6 +56,8 @@
       display: flex;
       flex-direction: column;
       background-color: var(--bg-clr2);
+      min-width: 260px;
+      transition: translate .3s ease-out;
 
       &::-webkit-scrollbar {
         width: 4px;
@@ -61,7 +102,7 @@
           padding-inline: 10px;
           cursor: pointer;
 
-          &:hover *{
+          &:hover * {
             color: var(--highlight-clr1);
           }
         }

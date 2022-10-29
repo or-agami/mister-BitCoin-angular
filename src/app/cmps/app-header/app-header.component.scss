@@ -1,3 +1,5 @@
+@import '../../../styles/main.scss';
+
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -5,6 +7,10 @@
   padding: 15px 20px;
   background-color: var(--bg-clr2);
   // margin-bottom: 40px;
+
+  @include for-mobile-layout {
+    padding-inline-end: 0;
+  }
 
   .app-logo {
     span {
@@ -20,8 +26,19 @@
   }
 
   nav {
+
+    @include for-mobile-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     >*:not(:last-child) {
       margin-inline-end: 20px;
+
+      @include for-mobile-layout {
+        margin-inline-end: 10px;
+      }
     }
 
     a {
@@ -33,6 +50,13 @@
 
       &.active {
         background-color: var(--highlight-clr1);
+      }
+    }
+
+    .stats {
+
+      @include for-mobile-layout {
+        display: none;
       }
     }
   }

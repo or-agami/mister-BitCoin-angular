@@ -1,3 +1,5 @@
+@import '../../../styles/main.scss';
+
 .home-page {
   display: flex;
   flex-direction: column;
@@ -24,14 +26,61 @@
     align-items: center;
     padding-block: 40px;
 
-    // background-size: 300% 300%;
-    // background-image: linear-gradient(45deg,
-    //     var(--bg-clr2) 0%,
-    //     rgb(21, 91, 119) 25%,
-    //     var(--highlight-clr1) 51%,
-    //     var(--highlight-clr2) 100%);
-    // animation: AnimateBG 20s ease infinite;
+    @include for-mobile-layout {
+      padding-inline: 30px;
+      text-align: center;
+    }
+  }
 
+  .transactions {
+    background-color: rgba(34, 34, 34, 0.158);
+    padding: 30px 40px;
+
+    .transactions-wrapper {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .title {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      display: flex;
+      gap: 25px;
+      padding: 0;
+      margin: 0 auto;
+      justify-content: space-evenly;
+      list-style: none;
+
+      @include for-mobile-layout {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        padding-top: 30px;
+
+        .transaction {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 4fr 2fr 1fr;
+          align-items: center;
+          justify-items: left;
+          padding-bottom: 10px;
+
+          &:not(:last-child) {
+            border-bottom: 1px solid rgba(34, 34, 34, 0.192);
+          }
+
+          >* {
+            margin: 0;
+            padding: 0;
+          }
+
+          .amount {
+            justify-self: end;
+          }
+        }
+      }
+    }
   }
 
   .info-container {
@@ -43,21 +92,34 @@
     justify-content: center;
     transition: flex .4s ease-out;
     flex: 2;
-
-    &:hover {
-      flex: 6;
+    
+    @include for-mobile-layout {
+      padding-top: 50px;
+      padding-bottom: 80px;
+      gap: 80px;
+      flex-direction: column;
+      align-items: center;
     }
 
-    // border-top: 1px solid white;
+    &:hover {
+      flex: 10;
+    }
 
     .market-info {
       display: flex;
       flex-direction: column;
       gap: 30px;
       max-width: 350px;
+      height: 100%;
+      justify-content: space-evenly;
+
+      @include for-mobile-layout {
+        gap: 50px;
+      }
 
       .info-wrapper {
         transition: scale .3s ease-out, translate .3s ease-out;
+        transition-delay: .2s;
 
         &:hover {
           scale: 1.15;
@@ -70,7 +132,6 @@
         align-items: center;
         gap: 20px;
         margin-bottom: 10px;
-
 
         .title {
           font-size: 18px;
@@ -89,6 +150,12 @@
       flex-direction: column;
       gap: 20px;
       max-width: 350px;
+      height: 100%;
+      justify-content: space-evenly;
+
+      @include for-mobile-layout {
+        gap: 50px;
+      }
 
       .heading-inner {
         display: flex;
@@ -97,6 +164,13 @@
         align-items: center;
         text-align: center;
         gap: 15px;
+        transition: scale .3s ease-out, translate .3s ease-out;
+        transition-delay: .2s;
+
+        &:hover {
+          scale: 1.15;
+          translate: -10% -2%;
+        }
 
         .title {
           font-size: 36px;

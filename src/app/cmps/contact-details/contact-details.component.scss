@@ -1,3 +1,5 @@
+@import '../../../styles/main.scss';
+
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,13 @@
   justify-content: center;
   margin-inline-start: 40px;
   padding-top: 70px;
+
+  @include for-mobile-layout {
+    margin-inline: auto;
+    width: fit-content;
+    max-width: 100vw;
+    padding-inline: 10px;
+  }
 
   .header {
     display: flex;
@@ -33,6 +42,7 @@
     border: none;
     outline: 1px solid var(--txt-clr2);
     border-radius: 8px;
+
     &:focus {
       outline: 1px solid var(--highlight-clr1);
     }
@@ -50,6 +60,10 @@
       margin: 30px 20px;
       font-size: 20px;
 
+      @include for-mobile-layout {
+        margin: 20px 5px;
+      }
+
       span {
         justify-self: flex-end;
         color: var(--txt-clr2);
@@ -63,6 +77,31 @@
         font-weight: 300;
         width: 240px;
       }
+    }
+  }
+
+  .transfer-form {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+
+    @include for-mobile-layout {
+      margin-inline: auto;
+    }
+
+    button {
+      color: var(--highlight-clr1);
+      cursor: pointer;
+    }
+  }
+
+  .transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include for-mobile-layout {
+      margin: 0 auto;
     }
   }
 }

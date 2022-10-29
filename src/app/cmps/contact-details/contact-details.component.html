@@ -1,7 +1,7 @@
 <section *ngIf="contact" class="contact-details">
   <form (ngSubmit)="onSaveContact()">
     <header class="header">
-      <img [src]="'https://robohash.org/' + contact._id" alt="User profile">
+      <img [src]="'https://robohash.org/' + contact._id + '/?set=set5'" alt="User profile">
       <input *ngIf="isInEditMode" [(ngModel)]="contact.name" type="text" name="name" placeholder="Name">
       <h1 *ngIf="!isInEditMode"> {{contact.name}}</h1>
     </header>
@@ -14,7 +14,7 @@
         <span>Email</span>
         <input [(ngModel)]="contact.email" type="text" name="email" placeholder="Email">
       </div>
-      <button >Save</button>
+      <button>Save</button>
     </div>
     <div *ngIf="!isInEditMode" class="details">
       <div class="field number">
@@ -27,16 +27,18 @@
       </div>
     </div>
   </form>
-  <form (ngSubmit)="onSubmitTransfer()">
+  <form (ngSubmit)="onSubmitTransfer()" class="transfer-form">
     <input [(ngModel)]="transferAmount" type="number" name="transferAmount">
     <button>Transfer</button>
   </form>
-  <div *ngIf="loggedinUser"  class="transactions">
-    <h1 class="title">Transactions</h1>
-    <div *ngFor="let move of loggedinUser.moves" class="transactions-list">
-      <div *ngIf="move.to === contact.name" class="transactions-preview">
-        <h1 class="date">{{move.at | date:'dd/MM/yyyy'}}</h1>
-        <h1 class="date">{{move.amount}}₿</h1>
+  <div *ngIf="loggedinUser" class="transactions">
+    <h1 class="title">Transactions:</h1>
+    <div class="transactions-list">
+      <div *ngFor="let move of loggedinUser.moves" class="transaction-preview">
+        <div *ngIf="move.to === contact.name" class="transaction">
+          <h2 class="date">{{move.at | date:'dd/MM/yyyy'}}</h2>
+          <h2 class="date">{{move.amount}} ₿</h2>
+        </div>
       </div>
     </div>
   </div>

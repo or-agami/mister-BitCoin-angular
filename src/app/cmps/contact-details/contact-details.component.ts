@@ -25,7 +25,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   paramsSubscription!: Subscription
   userSubscription!: Subscription
   isInEditMode: boolean = false
-  transferAmount!: number
+  transferAmount!: number | null
 
   async ngOnInit() {
     this.paramsSubscription = this.route.params.subscribe(async params => {
@@ -56,9 +56,10 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   onSubmitTransfer() {
     if (!this.loggedinUser) return
-    if (this.loggedinUser?.coins > this.transferAmount) {
+    if (this.transferAmount && this.loggedinUser?.coins > this.transferAmount) {
       this.UserService.makeTransaction(this.transferAmount, this.contact.name)
     }
+    this.transferAmount = null
   }
 
 }
